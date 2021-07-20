@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DashWood</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 200vh;
+        overflow-x: hidden;
+      }
+
+      .background {
+        background-image: url("DW.jpg");
+        background-size: cover;
+        /* background-position: 20% 20%; */
+        height: 100vh;
+        font: 8rem "Brush Script MT";
+        line-height: 130vh;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: auto;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .background::before {
+        content: "";
+        background-size: cover;
+        background-image: inherit;
+        /* background-position: 20% 20%; */
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -99;
+      }
+
+      .topright {
+        position: absolute;
+        top: 8px;
+        right: 16px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img class="topright" src="logal.webp" />
+    <div class="background">
+      <p>Dashwood Manor Seaside B&B</p>
+    </div>
+    <script>
+      const background = document.querySelector(".background");
+
+      document.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+
+        if (scrollY !== 0) {
+          background.style.backgroundPosition = `calc(${scrollY}px) calc(${scrollY}px)`;
+        } else {
+          background.style.backgroundPosition = "";
+        }
+      });
+    </script>
+  </body>
+</html>
